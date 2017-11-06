@@ -1,0 +1,287 @@
+<!doctype html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <title>My first AMP</title>
+    <link rel="canonical" href="hello-world.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+
+    <style amp-custom="">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Tahoma, sans-serif;
+            font-size: 18px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 95%;
+            color: white;
+        }
+
+        .header svg {
+            fill: white;
+        }
+
+        .burger {
+            display: block;
+            background: transparent;
+            border: none;
+        }
+
+        .header__logo {
+            text-transform: uppercase;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .sidebar {
+            width: 100%;
+            background-color: white;
+            position: relative;
+            padding-top: 60px;
+        }
+
+        .menu {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .menu__item {
+            border-top: 1px solid gray;
+            padding: 10px 0;
+        }
+
+        .menu__item:last-child {
+            border-bottom: 1px solid gray;
+        }
+
+        .menu__link {
+            color: black;
+            text-transform: uppercase;
+        }
+
+        .menu__btn-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            font-size: 40px;
+        }
+
+        .container {
+            padding: 0 10px;
+        }
+
+        .article__text p {
+            margin-bottom: 20px;
+        }
+
+        .article__text a {
+            color: darkred;
+            border-bottom: 1px solid darkred;
+        }
+
+        .article__title {
+            font-size: 30px;
+            margin: 25px 0;
+        }
+
+        .article__info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .comments__link {
+            background: #888888;
+            height: 35px;
+            width: 35px;
+            color: white;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .comments__link:after {
+            content: "";
+            position: absolute;
+            bottom: -9px;
+            left: 12px;
+            border-width: 9px 9px 0 0;
+            border-style: solid;
+            border-color: #888888 #fff;
+            display: block;
+            width: 0;
+        }
+
+        .similar-news__link {
+            color: black;
+        }
+
+        .post-time {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .post-time_sm {
+            font-size: 10px;
+        }
+
+        .similar-news__item {
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            color: white;
+            padding: 20px 0;
+            background-color: #1a150d;
+            border-top: 3px solid darkred;
+        }
+
+        .footer p {
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<header class="header">
+    <button class="header__burger burger" on='tap:sidebar1.open'>
+        <svg height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve">
+            <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
+        </svg>
+    </button>
+    <a class="header__logo">
+        Українська правда
+    </a>
+    <div class="header__search">
+        <svg height="24px" width="24px" id="search-find-detail-zoom" version="1.1" viewBox="0 0 14.854 14.854" xml:space="preserve"><path d="M9.354,0c-3.033,0-5.5,2.467-5.5,5.5s2.467,5.5,5.5,5.5s5.5-2.467,5.5-5.5S12.386,0,9.354,0z M9.354,10  c-2.481,0-4.5-2.019-4.5-4.5S6.872,1,9.354,1s4.5,2.019,4.5,4.5S11.835,10,9.354,10z"/><rect height="1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -7.6495 5.5325)" width="7.071" x="-0.682" y="11.5"/>
+        </svg>
+    </div>
+</header>
+<amp-sidebar class="sidebar" id="sidebar1" layout="nodisplay" side="left">
+    <ul class="menu">
+        <li class="menu__item">
+            <a href="#" class="menu__link">Новини</a>
+        </li>
+        <li class="menu__item">
+            <a href="#" class="menu__link">Публікації</a>
+        </li>
+        <li class="menu__item">
+            <a href="#" class="menu__link">Колонки</a>
+        </li>
+        <li class="menu__item">
+            <a href="#" class="menu__link">Інтерв'ю</a>
+        </li>
+        <li class="menu__item">
+            <a href="#" class="menu__link">Графіка</a>
+        </li>
+        <li class="menu__item">
+            <a href="#" class="menu__link">Фото і відео</a>
+        </li>
+        <li class="menu__item">
+            <a href="#" class="menu__link">Блоги</a>
+        </li>
+        <li class="menu__item">
+            <a href="#" class="menu__link">Архів</a>
+        </li>
+    </ul>
+    <button class="menu__btn-close" on='tap:sidebar1.close'>x</button>
+</amp-sidebar>
+
+<main class="main">
+    <article class="article">
+        <div class="article__main-img">
+            <amp-img src="main.jpg" alt="Main img" height="1000" width="1680" layout="responsive"></amp-img>
+        </div>
+        <div class="container">
+            <h2 class="article__title">
+                Хроніка 7 квітня. Юрі — волю, політикам — бочки
+            </h2>
+            <div class="article__info">
+                <div class="post-time">
+                П'ятниця, 7 квітня 2017, 09:00
+                </div>
+                <div class="comments">
+                    <a href="#" class="comments__link">4</a>
+                </div>
+            </div>
+
+            <div class="article__text">
+                <p><strong>2001, субота</strong></p>
+                <p>– Опозиція провела збори Форуму національного порятунку, на якому вирішили готуватися до всеукраїнського
+                    <a href="#">референдуму про недовіру</a> президентові Кучмі. Також прийняте рішення: у майбутньому не
+                    вести жодних перемовин з Кучмою.</p>
+                <p>Був на Форумі і посол США Карлос Паскуаль, який агітував за <strong>Ющенка,</strong> і напередодні звіту
+                    українського уряду наголосив на необхідності <a href="#">відновлення консенсусу</a> між урядом,
+                    парламентом та президентом.</p>
+                <p>
+                    <amp-img src="1.jpg" alt="War" height="920" width="690" layout="responsive"></amp-img>
+                </p>
+            </div>
+        </div>
+    </article>
+    <div class="container">
+        <div class="similar-news">
+            <amp-list width="auto" height="100" layout="fixed-height" src="data.json">
+                <template id="amp-template-id" type="amp-mustache">
+                    <div class="similar-news__item">
+                        <a href="{{url}}" class="similar-news__link">
+                            {{title}}
+                        </a>
+                        <div class="post-time post-time_sm">{{date}}</div>
+                    </div>
+                </template>
+                <div overflow
+                     role="button"
+                     aria-label="Show more"
+                     class="list-overflow ampstart-btn caps">
+                    Show more
+                </div>
+            </amp-list>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam at consequuntur enim expedita id
+            ipsum molestias non odit perspiciatis quisquam, repellendus sit vel veritatis?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam at consequuntur enim expedita id
+            ipsum molestias non odit perspiciatis quisquam, repellendus sit vel veritatis?</p>
+    </div>
+</footer>
+
+</body>
+</html>
